@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 antialiased">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <header class="mb-10">
+            <a 
+                href="/" 
+                class="text-blue-400 hover:text-blue-300 inline-block mb-6 transition duration-300 flex items-center"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Back to Home
+            </a>
+            <h1 class="text-4xl font-bold text-white tracking-tight">
+                <%= filename %>
+            </h1>
+        </header>
+        
+        <main class="bg-zinc-800 rounded-xl shadow-2xl p-8">
+            <article class="prose prose-invert max-w-none">
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    <%= filedata %>
+                </p>
+            </article>
+            
+            <div class="mt-8 border-t border-zinc-700 pt-6 flex justify-between items-center">
+                <span class="text-gray-500">Created on <%= new Date().toLocaleDateString() %></span>
+                <div class="space-x-4">
+                    <a 
+                        href="/files/<%= filename %>/edit" 
+                        class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300"
+                    >
+                        Edit Task
+                    </a>
+                    <form 
+                        action="/files/<%= filename %>?_method=DELETE" 
+                        method="POST" 
+                        class="inline-block"
+                    >
+                        <button 
+                            type="submit" 
+                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition duration-300"
+                        >
+                            Delete Task
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

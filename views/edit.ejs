@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 antialiased">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <form action="/files/<%= filename %>?_method=PUT" method="POST" class="bg-zinc-800 rounded-xl p-8 shadow-2xl">
+            <h1 class="text-4xl text-white mb-6">Edit Task: <%= filename %></h1>
+            <textarea 
+                name="details" 
+                rows="8" 
+                class="w-full bg-zinc-700 text-white rounded-lg p-4 mb-6"
+                required
+            ><%= filedata %></textarea>
+            <div class="flex justify-between">
+                <a href="/" class="text-gray-400 hover:text-white transition">Cancel</a>
+                <button 
+                    type="submit" 
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
